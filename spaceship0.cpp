@@ -89,16 +89,16 @@ int main() {
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym) {
                     case SDLK_w:
-                        y_vel -= 0.7;
+                        y_vel -= 0.11;
                         break;
                     case SDLK_a:
-                        x_vel -= 0.7;
+                        x_vel -= 0.1;
                         break;
                     case SDLK_s:
-                        y_vel += 0.7;
+                        y_vel += 0.1;
                         break;
                     case SDLK_d:
-                        x_vel += 0.7;
+                        x_vel += 0.11;
                         break;
                 }
                 break;
