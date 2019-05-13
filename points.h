@@ -9,7 +9,7 @@ typedef struct {
 } Point;
 
 Point rotate_point(float cx, float cy, float theta, Point p) {
-/* credit to Cameron for helping with this
+/* credit to Cameron for this bit
 https://stackoverflow.com/a/2259502
 */
     float s = sin(theta);
