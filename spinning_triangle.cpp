@@ -1,5 +1,6 @@
 // Compile with the following:
 // g++ spinning_triangle.cpp `pkg-config --cflags --libs sdl2`
+// You must have 'points.h' in the same directory as this to compile it.
 
 #include <SDL2/SDL.h>
 #include <iostream>
