@@ -3,7 +3,7 @@
 #include <math.h>
 #endif
 
-typedef struct {
+typedef struct Point {
     float x;
     float y;
 } Point;
