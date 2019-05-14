@@ -50,10 +50,9 @@ int main() {
             rend, /* rendering context */
             1, /* top-left corner of the string */
             11,
-            /* as of 14 May 2019 we only have uppercase
-            characters and spaces so far */
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-            26, /* length of the string */
+            /* as of 14 May 2019 we do not yet support all ascii chars */
+            " !\"#$%&'()*ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\",
+            39, /* length of the string */
             GREEN,
             255
         );
@@ -61,8 +60,8 @@ int main() {
             rend,
             1,
             21,
-            "PROGRAMMED IN C BY DANTE FALZONE",
-            32,
+            "WRITTEN IN C BY DANTE FALZONE",
+            29,
             GREEN,
             255
         );
