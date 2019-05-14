@@ -1,11 +1,11 @@
 // Compile with the following:
 // g++ rotatable_triangle.cpp `pkg-config --cflags --libs sdl2`
-// Must be in the same directory as 'points.h' to compile.
+// Must be in the same directory as 'points.hpp' to compile.
 
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <math.h>
-#include "points.h"
+#include "points.hpp"
 
 #define GREEN 0, 255, 70
 #define BLACK 0, 0, 0
