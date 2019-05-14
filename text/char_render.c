@@ -1,5 +1,8 @@
-/* Compile with the following:
+/* This program is to demonstrate the usage of 'djf-SDL-text.h',
+which as of 14 May 2019 is a work in progress.
+Compile with the following:
 gcc char_render.c `pkg-config --cflags --libs sdl2`
+Must be in the same directory as 'djf-SDL-text.h' to compile.
 */
 #include <SDL2/SDL.h>
 #include <stdio.h>
@@ -40,6 +43,7 @@ int main() {
         /* Now to test character rendering */
         int error_val;
         int i;
+        /* This for loop tells the world how I feel every day lol */
         for (i=1; i<400; i+=6) {
             error_val += render_char(rend, i, 1, 'A', GREEN, 255);
         }
