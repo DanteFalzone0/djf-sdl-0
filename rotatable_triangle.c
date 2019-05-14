@@ -20,7 +20,7 @@ int main() {
 
     SDL_Init(SDL_INIT_VIDEO);
 
-    // Now I'm going to create a window, 600x600 pixels, centred in the screen
+    /* Now I'm going to create a window, 600x600 pixels, centred in the screen */
     main_window = SDL_CreateWindow(
         "C Rotatable Triangle - Hold A and D keys to rotate",
         SDL_WINDOWPOS_CENTERED,
@@ -30,21 +30,21 @@ int main() {
         0
     );
 
-    // and a renderer so we can draw things on that window
+    /* and a renderer so we can draw things on that window */
     renderer = SDL_CreateRenderer(
         main_window,
         0,
         0
     );
 
-    // Make sure that the user is properly bewildered if something goes wrong
+    /* Make sure that the user is properly bewildered if something goes wrong */
     if (main_window == NULL || renderer == NULL) {
         printf("Error! Something went horribly wrong!\n");
         printf("Error: %s\n", SDL_GetError());
         return 1;
     }
 
-    // Now to make some fancy variables!
+    /* Now to make some fancy variables! */
     int window_open = 1;
     SDL_Event event;
     float angle_0_x = 300;
