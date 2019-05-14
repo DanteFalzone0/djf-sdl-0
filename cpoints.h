@@ -1,3 +1,8 @@
+/* This is a purely procedural version of 'points.hpp'.
+'points.hpp' is also pretty procedural, but it has structs
+which makes it at least slightly object-oriented. I wrote
+this because I couldn't get 'points.hpp' to work properly
+in C, even when it was named 'points.h'. */
 #ifndef MATH_H
 #define MATH_H
 #include <math.h>
