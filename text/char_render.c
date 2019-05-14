@@ -41,21 +41,31 @@ int main() {
         SDL_SetRenderDrawColor(rend, BLACK, 0);
         SDL_RenderClear(rend);
         /* Now to test character rendering */
-        int error_val;
         int i;
         /* This for loop tells the world how I feel every day lol */
         for (i=1; i<400; i+=6) {
-            error_val += render_char(rend, i, 1, 'A', GREEN, 255);
+            render_char(rend, i, 1, 'A', GREEN, 255);
         }
-        error_val += render_char(rend, 1, 11, 'B', GREEN, 255);
-        error_val += render_char(rend, 7, 11, 'C', GREEN, 255);
-        error_val += render_char(rend, 13, 11, 'D', GREEN, 255);
-        error_val += render_char(rend, 19, 11, 'E', GREEN, 255);
-        if (error_val != 0) {
-            printf("Error! The character rendering didn't work for some reason!\n");
-            printf("Error: %s\n", SDL_GetError());
-            return 1;
-        }
+        render_string(
+            rend, /* rendering context */
+            1, /* top-left corner of the string */
+            11,
+            /* as of 14 May 2019 we only have uppercase
+            characters and spaces so far */
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            26, /* length of the string */
+            GREEN,
+            255
+        );
+        render_string(
+            rend,
+            1,
+            21,
+            "PROGRAMMED IN C BY DANTE FALZONE",
+            32,
+            GREEN,
+            255
+        );
 
         SDL_RenderPresent(rend);
 
