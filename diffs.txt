@@ -1,0 +1,194 @@
+# Differences between rotatable_triangle.cpp and rotatable_triangle.c
+
+1,3c1,7
+< // Compile with the following:
+< // g++ rotatable_triangle.cpp `pkg-config --cflags --libs sdl2`
+< // Must be in the same directory as 'points.hpp' to compile.
+---
+> /* I wrote `rotatable_triangle.cpp` first, but then realized
+> that it didn't really need to be in C++, so I rewrote it in C
+> by changing a few things. */
+> 
+> /* Compile with the following:
+>    gcc rotatable_triangle.c `pkg-config --cflags --libs sdl2` -lm
+>    Must be in the same directory as 'cpoints.h' to compile. */
+6c10
+< #include <iostream>
+---
+> #include <stdio.h>
+8c12
+< #include "points.hpp"
+---
+> #include "cpoints.h"
+19c23
+<     // Now I'm going to create a window, 600x600 pixels, centred in the screen
+---
+>     /* Now I'm going to create a window, 600x600 pixels, centred in the screen */
+21c25
+<         "C++ Rotatable Triangle - Hold A and D keys to rotate",
+---
+>         "C Rotatable Triangle - Hold A and D keys to rotate",
+29c33
+<     // and a renderer so we can draw things on that window
+---
+>     /* and a renderer so we can draw things on that window */
+36c40
+<     // Make sure that the user is properly bewildered if something goes wrong
+---
+>     /* Make sure that the user is properly bewildered if something goes wrong */
+38,39c42,43
+<         std::cout << "Error! Something went horribly wrong!\n";
+<         std::cout << "Error: " << SDL_GetError() << '\n';
+---
+>         printf("Error! Something went horribly wrong!\n");
+>         printf("Error: %s\n", SDL_GetError());
+43,44c47,48
+<     // Now to make some fancy variables!
+<     bool window_open = true;
+---
+>     /* Now to make some fancy variables! */
+>     int window_open = 1;
+46,48c50,55
+<     Point angle_0 {300, (400 - (150 * sqrt(3)))};
+<     Point angle_1 {150, 400};
+<     Point angle_2 {450, 400};
+---
+>     float angle_0_x = 300;
+>     float angle_0_y = 400 - (150 * sqrt(3));
+>     float angle_1_x = 150;
+>     float angle_1_y = 400;
+>     float angle_2_x = 450;
+>     float angle_2_y = 400;
+57,60c64,67
+<             angle_0.x,
+<             angle_0.y,
+<             angle_1.x,
+<             angle_1.y
+---
+>             angle_0_x,
+>             angle_0_y,
+>             angle_1_x,
+>             angle_1_y
+64,67c71,74
+<             angle_1.x,
+<             angle_1.y,
+<             angle_2.x,
+<             angle_2.y
+---
+>             angle_1_x,
+>             angle_1_y,
+>             angle_2_x,
+>             angle_2_y
+71,74c78,81
+<             angle_2.x,
+<             angle_2.y,
+<             angle_0.x,
+<             angle_0.y
+---
+>             angle_2_x,
+>             angle_2_y,
+>             angle_0_x,
+>             angle_0_y
+82c89
+<                 window_open = false;
+---
+>                 window_open = 0;
+89c96
+<                         angle_0 = rotate_point(
+---
+>                         angle_0_x = rotate_point_x(
+93c100,101
+<                             angle_0
+---
+>                             angle_0_x,
+>                             angle_0_y
+95c103
+<                         angle_1 = rotate_point(
+---
+>                         angle_0_y = rotate_point_y(
+99c107,108
+<                             angle_1
+---
+>                             angle_0_x,
+>                             angle_0_y
+101c110
+<                         angle_2 = rotate_point(
+---
+>                         angle_1_x = rotate_point_x(
+105c114,136
+<                             angle_2
+---
+>                             angle_1_x,
+>                             angle_1_y
+>                         );
+>                         angle_1_y = rotate_point_y(
+>                             300,
+>                             300,
+>                             -0.03,
+>                             angle_1_x,
+>                             angle_1_y
+>                         );
+>                         angle_2_x = rotate_point_x(
+>                             300,
+>                             300,
+>                             -0.03,
+>                             angle_2_x,
+>                             angle_2_y
+>                         );
+>                         angle_2_y = rotate_point_y(
+>                             300,
+>                             300,
+>                             -0.03,
+>                             angle_2_x,
+>                             angle_2_y
+109c140,161
+<                         angle_0 = rotate_point(
+---
+>                         angle_0_x = rotate_point_x(
+>                             300,
+>                             300,
+>                             0.03,
+>                             angle_0_x,
+>                             angle_0_y
+>                         );
+>                         angle_0_y = rotate_point_y(
+>                             300,
+>                             300,
+>                             0.03,
+>                             angle_0_x,
+>                             angle_0_y
+>                         );
+>                         angle_1_x = rotate_point_x(
+>                             300,
+>                             300,
+>                             0.03,
+>                             angle_1_x,
+>                             angle_1_y
+>                         );
+>                         angle_1_y = rotate_point_y(
+113c165,166
+<                             angle_0
+---
+>                             angle_1_x,
+>                             angle_1_y
+115c168
+<                         angle_1 = rotate_point(
+---
+>                         angle_2_x = rotate_point_x(
+119c172,173
+<                             angle_1
+---
+>                             angle_2_x,
+>                             angle_2_y
+121c175
+<                         angle_2 = rotate_point(
+---
+>                         angle_2_y = rotate_point_y(
+125c179,180
+<                             angle_2
+---
+>                             angle_2_x,
+>                             angle_2_y
+
+# I made this by creating 'diffs.txt' and then running the command:
+# diff rotatable_triangle.cpp rotatable_triangle.c > diffs.txt
