@@ -7,11 +7,12 @@ in pure C. Work in progress as of 14 May 2019.*/
 
 /* This function renders a single character with a renderer.
 It returns 0 on success and nonzero on an error. */
-int render_char(SDL_Renderer *renderer,
-                float x,
+int render_char(SDL_Renderer *renderer, /* rendering context */
+                float x, /* position of the character */
                 float y,
-                char character,
-                int r,
+                char character, /* the actual character to display
+                                  (I plan to support the full ascii set when this is done) */
+                int r, /* colour is in 8-bit RGB values */
                 int g,
                 int b,
                 int alpha) {
