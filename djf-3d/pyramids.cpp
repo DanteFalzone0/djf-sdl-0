@@ -116,6 +116,9 @@ int main() {
     if (main_win == NULL || rend == NULL) {
         std::cout << "There was a problem!\n";
         std::cout << "Error: " << SDL_GetError() << '\n';
+        SDL_DestroyRenderer(rend);
+        SDL_DestroyWindow(main_win);
+        SDL_Quit();
         return 1;
     }
 
