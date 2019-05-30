@@ -1,8 +1,12 @@
 /* Header file for displaying characters with SDL. Written
-in pure C. Work in progress as of 14 May 2019.*/
+in pure C. Work in progress as of 29 May 2019.*/
 #ifndef SDL2_SDL_H
 #define SDL2_SDL_H
 #include <SDL2/SDL.h>
+#endif
+#ifndef STDIO_H
+#define STDIO_H
+#include <stdio.h>
 #endif
 
 /* This function renders a single character with a renderer.
@@ -84,6 +88,94 @@ int render_char(SDL_Renderer *renderer, /* rendering context */
             error_val += SDL_RenderDrawLine(renderer, x+1, y, x+3, y+4);
             error_val += SDL_RenderDrawLine(renderer, x+3, y, x+1, y+4);
             error_val += SDL_RenderDrawLine(renderer, x, y+2, x+4, y+2);
+            break;
+        case '+':
+            error_val += SDL_RenderDrawLine(renderer, x+2, y+1, x+2, y+5);
+            error_val += SDL_RenderDrawLine(renderer, x, y+3, x+4, y+3);
+            break;
+        case '-':
+            error_val += SDL_RenderDrawLine(renderer, x, y+3, x+4, y+3);
+            break;
+        case '.':
+            error_val += SDL_RenderDrawLine(renderer, x+1, y+6, x+2, y+7);
+            error_val += SDL_RenderDrawLine(renderer, x+1, y+7, x+2, y+6);
+            break;
+        case '/':
+            error_val += SDL_RenderDrawLine(renderer, x, y+7, x+4, y);
+            break;
+        case '0':
+            error_val += SDL_RenderDrawLine(renderer, x+2, y, x, y+2);
+            error_val += SDL_RenderDrawLine(renderer, x+2, y, x+4, y+2);
+            error_val += SDL_RenderDrawLine(renderer, x, y+3, x, y+5);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+3, x+4, y+5);
+            error_val += SDL_RenderDrawLine(renderer, x, y+5, x+2, y+7);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+5, x+2, y+7);
+            error_val += SDL_RenderDrawLine(renderer, x, y+5, x+4, y+2);
+            break;
+        case '1':
+            error_val += SDL_RenderDrawLine(renderer, x, y, x+2, y);
+            error_val += SDL_RenderDrawLine(renderer, x+2, y, x+2, y+6);
+            error_val += SDL_RenderDrawLine(renderer, x, y+7, x+4, y+7);
+            break;
+        case '2':
+            error_val += SDL_RenderDrawLine(renderer, x, y+1, x+1, y);
+            error_val += SDL_RenderDrawLine(renderer, x+1, y, x+3, y);
+            error_val += SDL_RenderDrawLine(renderer, x+3, y, x+4, y+1);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+1, x+4, y+3);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+3, x, y+7);
+            error_val += SDL_RenderDrawLine(renderer, x, y+7, x+4, y+7);
+            break;
+        case '3':
+            error_val += SDL_RenderDrawLine(renderer, x, y+1, x+1, y);
+            error_val += SDL_RenderDrawLine(renderer, x+1, y, x+3, y);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+1, x+4, y+3);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+3, x+2, y+3);
+            error_val += SDL_RenderDrawLine(renderer, x+2, y+3, x+4, y+5);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+5, x+4, y+6);
+            error_val += SDL_RenderDrawLine(renderer, x+1, y+7, x+3, y+7);
+            error_val += SDL_RenderDrawLine(renderer, x, y+6, x+1, y+7);
+            break;
+        case '4':
+            error_val += SDL_RenderDrawLine(renderer, x, y, x, y+4);
+            error_val += SDL_RenderDrawLine(renderer, x, y+4, x+4, y+4);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y, x+4, y+7);
+            break;
+        case '5':
+            error_val += SDL_RenderDrawLine(renderer, x+4, y, x, y);
+            error_val += SDL_RenderDrawLine(renderer, x, y, x, y+4);
+            error_val += SDL_RenderDrawLine(renderer, x+1, y+3, x+3, y+3);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+4, x+4, y+6);
+            error_val += SDL_RenderDrawLine(renderer, x+3, y+7, x+1, y+7);
+            error_val += SDL_RenderDrawPoint(renderer, x, y+6);
+            break;
+        case '6':
+            error_val += SDL_RenderDrawLine(renderer, x+3, y, x+1, y);
+            error_val += SDL_RenderDrawPoint(renderer, x+4, y+1);
+            error_val += SDL_RenderDrawLine(renderer, x, y+1, x, y+6);
+            error_val += SDL_RenderDrawLine(renderer, x+1, y+7, x+3, y+7);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+6, x+4, y+4);
+            error_val += SDL_RenderDrawLine(renderer, x+3, y+3, x+1, y+3);
+            break;
+        case '7':
+            error_val += SDL_RenderDrawLine(renderer, x, y, x, y+1);
+            error_val += SDL_RenderDrawLine(renderer, x, y, x+4, y);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y, x+3, y+7);
+            break;
+        case '8':
+            error_val += SDL_RenderDrawLine(renderer, x+1, y, x+3, y);
+            error_val += SDL_RenderDrawLine(renderer, x, y+1, x, y+2);
+            error_val += SDL_RenderDrawLine(renderer, x+1, y+3, x+3, y+3);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+1, x+4, y+2);
+            error_val += SDL_RenderDrawLine(renderer, x, y+4, x, y+6);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+4, x+4, y+6);
+            error_val += SDL_RenderDrawLine(renderer, x+1, y+7, x+3, y+7);
+            break;
+        case '9':
+            error_val += SDL_RenderDrawLine(renderer, x+1, y, x+3, y);
+            error_val += SDL_RenderDrawLine(renderer, x, y+1, x, y+2);
+            error_val += SDL_RenderDrawLine(renderer, x+1, y+3, x+3, y+3);
+            error_val += SDL_RenderDrawLine(renderer, x+4, y+1, x+4, y+6);
+            error_val += SDL_RenderDrawLine(renderer, x+3, y+7, x+1, y+7);
             break;
         case 'A':
             error_val += SDL_RenderDrawLine(renderer, x+2, y, x, y+2);
